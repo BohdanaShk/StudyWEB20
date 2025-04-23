@@ -20,7 +20,7 @@ packaging==24.2
 pluggy==1.5.0
 psycopg2-binary==2.9.10
 pytest==8.3.5
-python-magic-bin==0.4.14
+python-magic
 requests==2.32.3
 SQLAlchemy==2.0.38
 typing_extensions==4.12.2
