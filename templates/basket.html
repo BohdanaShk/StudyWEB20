@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h2>Ваш кошик</h2>
+
+{% if items %}
+  <table>
+    <tr><th>Назва</th><th>К-сть</th><th>Ціна</th><th>Разом</th></tr>
+    {% for item in items %}
+      <tr>
+        <td>{{ item.name }}</td>
+        <td>{{ item.quantity }}</td>
+        <td>{{ item.price }}</td>
+        <td>{{ item.total }}</td>
+      </tr>
+    {% endfor %}
+  </table>
+  <h3>Загальна сума: {{ total_price }}</h3>
+  <form method="post" action="{{ url_for('create_order') }}">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
+    <button type="submit">Оформити замовлення</button>
+  </form>
+{% else %}
+  <p>Кошик порожній</p>
+{% endif %}
+
+{% endblock %}

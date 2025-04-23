@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        <div class="flash-messages">
+          {% for category, message in messages %}
+            <div class="alert alert-{{ category }}">{{ message }}</div>
+          {% endfor %}
+        </div>
+      {% endif %}
+    {% endwith %}
+
+    <img src="{{ url_for('static', filename='menu/' + position.file_name) }}" alt="Фото {{ position.name }}">
+    <h2>{{ position.name }} ({{ position.weight }} г)</h2>
+    <p><strong>Інгредієнти:</strong> {{ position.ingredients }}</p>
+    <p><strong>Опис:</strong></p>
+    <pre>{{ position.description }}</pre>
+    <p><strong>Ціна:</strong> {{ position.price }} грн</p>
+
+    <form method="post">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
+        <input type="hidden" name="name" value="{{ position.name }}">
+        <label for="num">Кількість:</label>
+        <input type="number" name="num" id="num" value="1" min="1" required>
+        <button type="submit">Додати в кошик</button>
+    </form>
+{% endblock %}

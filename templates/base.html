@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Мій ресторан{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('home') }}">Головна</a></li>
+                <li><a href="{{ url_for('menu') }}">Меню</a></li>
+                <li><a href="{{ url_for('basket') }}">Кошик</a></li>
+                <li><a href="{{ url_for('my_orders') }}">Мої замовлення</a></li>
+
+                {% if current_user.is_authenticated and current_user.nickname == 'admin' %}
+                    <li><a href="{{ url_for('add_position') }}">Додати позицію</a></li>
+                {% endif %}
+
+                {% if current_user.is_authenticated %}
+                    <li><a href="{{ url_for('logout') }}">Вийти ({{ current_user.nickname }})</a></li>
+                {% else %}
+                    <li><a href="{{ url_for('login') }}">Вхід</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <footer>
+        <p>© 2025 Мій ресторан</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Панель адміністратора</title>
+</head>
+<body>
+    <h1>Панель адміністратора</h1>
+    <nav>
+        <ul>
+            <li><a href="{{ url_for('add_position') }}">Додати позицію</a></li>
+            <li><a href="{{ url_for('menu') }}">Меню</a></li>
+            <li><a href="{{ url_for('home') }}">На головну</a></li>
+        </ul>
+    </nav>
+    <p>Вітаю, {{ current_user.nickname }}!</p>
+</body>
+</html>

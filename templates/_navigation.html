@@ -1,0 +1,15 @@
+<nav style="padding: 10px; background-color: #f8f9fa; border-bottom: 1px solid #ccc;">
+  <a href="{{ url_for('home') }}">Головна</a> |
+
+<a href="{{ url_for('my_orders') }}">Меню</a>
+  {% if current_user.is_authenticated %}
+    {% if current_user.nickname == 'admin' %}
+      | <a href="{{ url_for('add_position') }}">Додати позицію</a>
+    {% endif %}
+    | <strong>{{ current_user.nickname }}</strong>
+    | <a href="{{ url_for('logout') }}">Вийти</a>
+  {% else %}
+    | <a href="{{ url_for('login') }}">Увійти</a>
+    | <a href="{{ url_for('register') }}">Реєстрація</a>
+  {% endif %}
+</nav>
