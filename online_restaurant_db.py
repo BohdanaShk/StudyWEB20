@@ -7,8 +7,11 @@ from flask_login import UserMixin
 import bcrypt
 from datetime import datetime
 PGUSER = 'postgres'
-PGPASSWORD = "0903"
-engine = create_engine("postgresql+psycopg2://postgres:0903@postgres.railway.internal:5432/online_restaurant", echo=True)
+POSTGRES_PASSWORD = "DZCYJUlBBYIXeFVpuczXaxYxuJpxUwrE"
+RAILWAY_TCP_PROXY_DOMAIN = 'postgres.railway.internal'
+RAILWAY_TCP_PROXY_PORT = '5432'
+PGDATABASE = railway
+engine = create_engine("postgresql://${{PGUSER}}:${{POSTGRES_PASSWORD}}@${{RAILWAY_TCP_PROXY_DOMAIN}}:${{RAILWAY_TCP_PROXY_PORT}}/${{PGDATABASE}}", echo=True)
 
 Session = sessionmaker(bind=engine)
 
