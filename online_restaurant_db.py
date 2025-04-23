@@ -8,7 +8,7 @@ import bcrypt
 from datetime import datetime
 PGUSER = 'postgres'
 PGPASSWORD = "0903"
-engine = create_engine("postgresql+psycopg2://postgres:0903@your-db-host.render.com:5432/online_restaurant", echo=True)
+engine = create_engine("postgresql+psycopg2://postgres:0903@postgres.railway.internal:5432/online_restaurant", echo=True)
 
 Session = sessionmaker(bind=engine)
 
