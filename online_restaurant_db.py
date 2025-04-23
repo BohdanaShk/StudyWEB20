@@ -11,7 +11,7 @@ POSTGRES_PASSWORD = "DZCYJUlBBYIXeFVpuczXaxYxuJpxUwrE"
 RAILWAY_TCP_PROXY_DOMAIN = 'postgres.railway.internal'
 RAILWAY_TCP_PROXY_PORT = '5432'
 PGDATABASE = "railway"
-engine = create_engine("postgresql://${{PGUSER}}:${{POSTGRES_PASSWORD}}@${{RAILWAY_TCP_PROXY_DOMAIN}}:${{RAILWAY_TCP_PROXY_PORT}}/${{PGDATABASE}}", echo=True)
+engine = create_engine(f"postgresql://${{PGUSER}}:${{POSTGRES_PASSWORD}}@${{RAILWAY_TCP_PROXY_DOMAIN}}:${{RAILWAY_TCP_PROXY_PORT}}/${{PGDATABASE}}", echo=True)
 
 Session = sessionmaker(bind=engine)
 
